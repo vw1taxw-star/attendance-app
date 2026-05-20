@@ -12,7 +12,7 @@ function normalizeMinute(m) {
   );
 }
 
-export default function TimePickerModal({ value, title, onConfirm, onCancel }) {
+export default function TimePickerModal({ value, title, onConfirm, onClear, onCancel }) {
   const [h, m] = (value || '07:30').split(':');
   const [hour, setHour] = useState(h || '07');
   const [minute, setMinute] = useState(normalizeMinute(m || '30'));
@@ -28,6 +28,7 @@ export default function TimePickerModal({ value, title, onConfirm, onCancel }) {
         </div>
         <div className="modal-time-preview">{hour}:{minute}</div>
         <div className="modal-actions">
+          {value && <button className="btn-clear" onClick={onClear}>クリア</button>}
           <button className="btn-cancel" onClick={onCancel}>キャンセル</button>
           <button className="btn-confirm" onClick={() => onConfirm(`${hour}:${minute}`)}>確定</button>
         </div>

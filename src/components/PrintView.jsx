@@ -59,7 +59,7 @@ export default function PrintView({ period, dates, periodData }) {
                 <td className={sat ? 'day-sat' : sun ? 'day-sun' : ''}>{getDayName(d)}</td>
                 <td>{paidLeave ? '' : start}</td>
                 <td>{paidLeave ? '' : end}</td>
-                <td>{paidLeave ? '有給休暇' : (entry?.note || '')}</td>
+                <td>{paidLeave ? `有給休暇${entry?.note ? `　${entry.note}` : ''}` : (entry?.note || '')}</td>
               </tr>
             );
           })}
@@ -67,7 +67,7 @@ export default function PrintView({ period, dates, periodData }) {
         <tfoot>
           <tr className="total-row">
             <td colSpan={2}>合計</td>
-            <td colSpan={2}>出発 {workedDays}日　有給 {paidLeaveDays}日</td>
+            <td colSpan={2}>出勤 {workedDays}日　有給 {paidLeaveDays}日</td>
             <td></td>
           </tr>
         </tfoot>
